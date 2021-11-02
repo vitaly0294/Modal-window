@@ -1,0 +1,277 @@
+@import "variables";
+@import "mixins";
+
+
+#modal-window {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: rgb(128, 128, 128);
+
+  #form {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+
+    .form__title {
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+
+    .form__item {
+      @include input-wrap(10px, 100%);
+
+      .form-input {
+        @include input-item();
+      }
+      
+      .error {
+        @include error();
+      }
+
+      .error-label {
+        @include error-label();
+      }
+
+      .label {
+        @include input-label();
+      }
+    }
+
+    .form__select {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .select {
+        position: relative;
+
+        .input-select {
+          width: 250px;
+          height: 30px;
+
+          border: $borderBlock;
+          border-radius: 3px;
+  
+          background: url(../assets/img/arrow.png) no-repeat right;
+
+          color: rgb(255, 255, 255);
+        }
+
+        .error {
+          @include error();
+        }
+
+        .error-label {
+          @include error-label();
+        }
+
+        .label {
+          position: absolute;
+          width: 250px;
+          height: 30px;
+          padding-top: 8px;
+          padding-left: 15px;
+        }
+
+        .select-value {
+          z-index: 100;
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          display: none;
+
+          background: rgb(255, 255, 255);
+
+          &_active {
+            display: block;
+          }
+       }
+
+          .select-option {
+            width: 250px;
+            height: 30px;
+            padding-top: 8px;
+            padding-left: 15px;
+
+            border: $borderBlock;
+            border-top: none;
+
+            list-style-type: none;
+
+            &:first-child {
+              border: $borderBlock;
+              border-radius: 3px;
+              outline: $outlineBlock;
+              background: url(../assets/img/arrow-active.png) no-repeat right;
+            }
+
+            &:hover {
+              background-color: rgb(235, 253, 255);
+            }
+          }
+      }
+    }
+
+    .form__options {
+      display: flex;
+      flex-direction: column;
+
+      .add-option {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px;
+
+        .add-name {
+          padding-top: 2px;
+        }
+
+        .add-value {
+          
+          .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+
+            & input {
+              display: none;
+
+              &:checked + .slider {
+                background-color: rgb(49, 148, 49);
+              }
+
+              &:focus + .slider {
+                box-shadow: 0 0 1px rgb(49, 148, 49);
+              }
+
+              &:checked + .slider:before {
+                transform: translateX(21px);
+              }
+            }
+
+            .slider {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              cursor: pointer;
+              background-color: rgb(206, 188, 189);
+              border: 2px solid rgb(206, 188, 189);
+              transition: .4s;
+
+              &:before {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                content: "";
+                height: 18px;
+                width: 18px;
+                background-color: rgb(222, 208, 209);
+                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, .6),
+                            0px 0px 3px 2px rgba(255, 255, 255, .7) inset;
+                transition: .4s;
+              }
+            }
+
+            .slider.round {
+              border-radius: 34px;
+            }
+            
+            .slider.round:before {
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+
+    .form__mess {
+      @include input-wrap(30px);
+
+      .mess {
+        @include input-item(90px, 20px);
+      }
+
+      .label {
+        @include input-label(10px);
+      }
+    }
+
+    .form__calc {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .btn-form {
+      display: flex;
+      justify-content: center;
+
+      .btn {
+        display: block;
+        width: 140px;
+        height: 40px;
+
+        border: 1px solid rgb(20, 115, 198);
+        border-radius: 3px;
+
+        background-color: rgb(68, 138, 224);
+
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        font-weight: 300;
+
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 15px;
+      height: 15px;
+
+      &::before, &::after {
+        position: absolute;
+        left: 7px;
+        content: ' ';
+        height: 100%;
+        width: 1px;
+        background: #000;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+      }
+
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
