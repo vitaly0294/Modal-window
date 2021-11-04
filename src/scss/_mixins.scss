@@ -1,0 +1,51 @@
+@mixin input-wrap($marginBottom: 10px, $widthInput: auto) {
+  position: relative;
+  width: $widthInput;
+  margin-bottom: $marginBottom;
+
+  font-size: 14px;
+  font-weight: 300;
+}
+
+@mixin input-item($heightInput: 45px, $paddingTop: 10px) {
+  width: 100%;
+  height: $heightInput;
+
+  padding-top: $paddingTop;
+  padding-left: 15px;
+
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+
+  &:focus, &:active {
+    outline: 2px solid rgb(181, 214, 242);
+  }
+}
+
+@mixin input-label($top: 15px) {
+  position: absolute;
+  top: $top;
+  left: 15px;
+
+  color: rgb(139, 128, 136);
+  opacity: .8;
+
+  transition: top .2s;
+
+  &_active {
+    top: 6px;
+    font-size: 10px;
+    font-weight: normal;
+  }
+}
+
+@mixin error() {
+  border: 1px solid rgb(237, 89, 111) !important;
+  background-color: rgb(252, 212, 218) !important;
+  
+}
+
+@mixin error-label() {
+  opacity: 1 !important;
+  color: rgb(237, 89, 111) !important;
+}

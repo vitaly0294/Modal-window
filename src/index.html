@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Modal window</title>
+</head>
+
+<body>
+	<div id="conteiner">
+
+
+		<div id="modal-window" class="modal-window">
+			<form id="form" name="user-form" class="form"  novalidate>
+
+				<h2 class="form__title">Title form</h2>
+	
+				<div class="form__items">
+
+					<div class="form__item">
+						<label for="form-first-name" class="label">First Name *</label>
+						<input type="text" class="form-input inputUser" id="form-first-name" name="user_first-name" placeholder="">
+					</div>
+
+					<div class="form__item">
+						<label for="form-last-name" class="label">Last Name *</label>
+						<input type="text" class="form-input inputUser" id="form-last-name" name="user_last-name" placeholder="">
+					</div>
+
+					<div class="form__item">
+						<label for="user-email" class="label">user@gmail.com *</label>
+						<input type="email" class="form-input inputUser" id="user-email" name="user_email" placeholder="">
+					</div>	
+
+				</div>
+	
+				<div class="form__select">
+					<div class="select-name">Product type *</div>
+
+          <div class="select">
+						<label for="input-select" class="label">Select product type</label>
+						<input type="text" class="input-select" id="input-select" name="input-select">
+
+						<ul name="select-value" id="" class="select-value">
+							<li value class="select-option">Select product type</li>
+							<li value="50" class="select-option">Product $50</li>
+							<li value="100" class="select-option">Product $100</li>
+							<li value="300" class="select-option">Product $300</li>
+						</ul>
+
+          </div>
+				</div>
+	
+				<div class="form__options">
+					<div class="add-option">
+						<div class="add-name">Additinal feature for $100</div>
+						<div class="add-value">
+							<label class="switch">
+								<input type="checkbox" class="checkbox" name="check-one" id="check-one" value="100">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class="add-option">
+						<div class="add-name">Additinal feature for $200</div>
+						<div class="add-value">
+							<label class="switch">
+								<input type="checkbox" class="checkbox" name="check-two" id="check-two" value="200">
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+	
+				<div class="form__mess">
+					<label for="form-mess" class="label">Type your comment</label>
+					<textarea  class="mess inputUser"	name="form-mess" id="form-mess" placeholder=""></textarea>
+				</div>
+	
+				<div class="form__calc">
+					<div class="form__calc-name">Total price</div>
+					<div class="form__calc-value">$0</div>
+				</div>
+	
+				<div class="btn-form">
+					<button class="btn" type="submit" id="form-submit">Send form</button>
+				</div>
+	
+				<a href="#close" class="close-btn"></a>
+
+				<div class="send">
+					<div class="sk-circle-bounce">
+						<div class="sk-child sk-circle-1"></div>
+						<div class="sk-child sk-circle-2"></div>
+						<div class="sk-child sk-circle-3"></div>	
+						<div class="sk-child sk-circle-4"></div>	
+						<div class="sk-child sk-circle-5"></div>	
+						<div class="sk-child sk-circle-6"></div>	
+						<div class="sk-child sk-circle-7"></div>	
+						<div class="sk-child sk-circle-8"></div>	
+						<div class="sk-child sk-circle-9"></div>	
+						<div class="sk-child sk-circle-10"></div>	
+						<div class="sk-child sk-circle-11"></div>	
+						<div class="sk-child sk-circle-12"></div>
+					</div>
+					<div class="send-mess"></div>			
+					
+				</div>
+
+			</form>
+		</div>
+
+	</div>	
+
+</body>
+</html>
