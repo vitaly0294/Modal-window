@@ -1,4 +1,7 @@
 /* eslint-disable max-len */
+import {ValidatorInput} from './validatorInput';
+import {SendForm} from './sendForm';
+
 export class Modal {
 	constructor() {
 		this.modalWindow = document.getElementById('modal-window');
@@ -6,6 +9,42 @@ export class Modal {
 		this.totalPrice = 0;
 		this.inputSelect = document.querySelector('#input-select');
 		this.selectValue = document.querySelector('.select-value');
+		this.validInput = new ValidatorInput({
+			selector: '#form',
+			pattern: {
+				name: /^[A-Za-z]{2,}$/,
+				num: /^[0-9]{1,}$/
+			},
+			method: {
+				'user-email': [
+					['notEmpty'],
+					['pattern', 'email']
+				],
+				'form-first-name': [
+					['notEmpty'],
+					['pattern', 'name']
+				],
+				'form-last-name': [
+					['notEmpty'],
+					['pattern', 'name']
+				],
+				'input-select': [
+					['notEmpty'],
+					['pattern', 'num']
+				]
+			},
+			message: {
+				'user-email': 'Please fill in email.',
+				'form-first-name': 'Please fill in first name.',
+				'form-last-name': 'Please fill in second name.',
+				'input-select': 'Please select product type.'
+			}
+		});
+		this.sendForm = new SendForm({
+			errorMessage: 'Eror...',
+			loadMessage: 'Load...',
+			sucsessMessage: 'Completed!'
+		});
 	}
 
 	setInputActive(item) {
@@ -63,7 +102,30 @@ export class Modal {
 		item.style.display = 'none';
 	}
 
-	init() {
+	startSend(target) {
+		const _this = this;
+		this.sendForm.init(target, _this);
+	}
+
+	clearForm(form, sendBlock) {
+		form.reset();
+
+		const inputText = document.querySelectorAll('.inputUser');
+		inputText.forEach((item) => {
+			this.removeInputActive(item);
+		});
+
+		this.options.clear();
+
+		const inputSelect = document.getElementById('input-select');
+		inputSelect.previousElementSibling.textContent = 'Select product type';
+
+		this.setPrise();
+
+		sendBlock.style.display = 'none';
+	}
+
+	eventListenerForm() {
 		this.modalWindow.addEventListener('focusin', event => {
 			const target = event.target;
 			if (target.closest('.inputUser')) {
@@ -100,11 +162,17 @@ export class Modal {
 			}
 		})
 
-		// this.modalWindow.addEventListener('change', event => {
-		// 	const target = event.target;
-		// 	if (target.closest('#form-submit')) {
-		// 		console.log(1);
-		// 	}
-		// })
+		this.modalWindow.addEventListener('submit', event => {
+			event.preventDefault();
+			const target = event.target;
+			if (target.closest('#form') && !this.validInput.checkDispatch()) {
+				this.startSend(target);
+			}
+		})
+	}
+
+	init() {
+		this.validInput.init();
+		this.eventListenerForm();
 	}
 }

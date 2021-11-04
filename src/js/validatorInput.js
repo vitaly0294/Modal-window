@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+
+
 export class ValidatorInput {
 	constructor({selector, pattern = {}, method, message}) {
 		this.form = document.querySelector(selector);
@@ -15,12 +17,11 @@ export class ValidatorInput {
 		this.applyStyle();
 		this.setPattern();
 		this.elementsForm.forEach(elem => elem.addEventListener('change', this.chekIt.bind(this)));
-		this.form.addEventListener('submit', event => {
-			this.elementsForm.forEach(elem => this.chekIt({target: elem}));
-			if (this.error.size) {
-				event.preventDefault();
-			}
-		});
+	}
+
+	checkDispatch() {
+		this.elementsForm.forEach(elem => this.chekIt({target: elem}));
+		return this.error.size;
 	}
 
 	isValid(elem) {
